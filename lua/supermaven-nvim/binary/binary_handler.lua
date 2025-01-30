@@ -558,6 +558,9 @@ function BinaryLifecycle:open_popup(message, include_free)
 
   local intro_message = "Please visit the following URL to set up Supermaven Pro"
   if include_free then
+	if vim.g.supermaven_free_version then
+	  return
+	end
     intro_message = intro_message .. " (or use :SupermavenUseFree)."
   end
   local win_height = 3

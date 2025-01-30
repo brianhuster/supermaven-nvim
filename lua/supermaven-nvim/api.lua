@@ -51,6 +51,7 @@ M.toggle = function()
 end
 
 M.use_free_version = function()
+  vim.g.supermaven_free_version = 1
   binary:use_free_version()
 end
 
