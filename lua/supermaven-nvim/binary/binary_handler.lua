@@ -174,6 +174,7 @@ function BinaryLifecycle:process_message(message)
   elseif message.kind == "metadata" then
     self:update_metadata(message)
   elseif message.kind == "activation_request" then
+	if vim.g.supermaven_free_version then return end
     self.activate_url = message.activateUrl
     vim.schedule(function()
       if self.activate_url ~= nil then
@@ -558,9 +559,6 @@ function BinaryLifecycle:open_popup(message, include_free)
 
   local intro_message = "Please visit the following URL to set up Supermaven Pro"
   if include_free then
-	if vim.g.supermaven_free_version then
-	  return
-	end
     intro_message = intro_message .. " (or use :SupermavenUseFree)."
   end
   local win_height = 3
